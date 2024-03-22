@@ -4,7 +4,6 @@ from sklearn.ensemble import RandomForestClassifier
 from ml.data import process_data
 import pandas as pd
 
-
 def train_model(X_train, y_train):
     """
     Trains a machine learning model and returns it.
@@ -20,7 +19,7 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
-    model = RandomForestClassifier(n_estimators=200, random_state=42)
+    model = RandomForestClassifier(n_estimators=100, random_state=42)
     model.fit(X_train, y_train)
     return model
 
@@ -121,7 +120,7 @@ def performance_on_categorical_slice(
     """
 
     X_slice, y_slice, _, _ = process_data(
-        data,
+        data[data[column_name] == slice_value],
         categorical_features,
         label,
         training=False,
